@@ -1,16 +1,26 @@
 const mysql_con = require('../Configuration/mysql-config');
 
-const CrearUsuario = () => {
+const CrearUsuario = (user) => {
+  const {
+    Nombre_completo,
+    Direccion,
+    Distrito,
+    Fecha_Nacimiento,
+    Foto,
+    correo,
+    contrasenia,
+  } = user;
   return new Promise((result, reject) => {
     mysql_con.query(
-      'call usp_crear_usuario(?,?,?,?,?,?,?)'[
+      'call usp_crear_usuario(?,?,?,?,?,?,?)',
+      [
         (Nombre_completo,
         Direccion,
         Distrito,
         Fecha_Nacimiento,
         Foto,
         correo,
-        contrasenia)
+        contrasenia),
       ],
       (err, UsuarioCreado) => {
         if (err) reject();
@@ -20,7 +30,15 @@ const CrearUsuario = () => {
   });
 };
 
-const ActualizarUsuario = () => {
+const ActualizarUsuario = (user) => {
+  const {
+    IdUsuarios,
+    Nombre_completo,
+    Direccion,
+    Distrito,
+    Fecha_Nacimiento,
+    Foto,
+  } = user;
   return new Promise((result, reject) => {
     mysql_con.query(
       'call usp_actualizar_usuario(?,?,?,?,?,?)',
@@ -40,7 +58,8 @@ const ActualizarUsuario = () => {
   });
 };
 
-const EliminarUsuario = () => {
+const EliminarUsuario = (user) => {
+  const { idUsuario } = user;
   return new Promise((result, reject) => {
     mysql_con.query(
       'call usp_eliminar_usuario(?)',

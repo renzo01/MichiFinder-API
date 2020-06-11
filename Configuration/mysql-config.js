@@ -6,4 +6,4 @@ const mysql_con = mysql.createConnection({
   database: 'MichiFinder',
 });
 
-export default mysql_con;
+module.exports = mysql_con;
