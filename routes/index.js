@@ -10,4 +10,4 @@ app.use(Usuario);
 app.use(Adopcion);
 app.use(Gato);
 
-export default app;
+module.exports = app;

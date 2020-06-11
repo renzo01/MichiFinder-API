@@ -47,4 +47,5 @@ app.get('/gato/listar/id', async (req, res) => {
     gatos: result,
   });
 });
+
 module.exports = app;
