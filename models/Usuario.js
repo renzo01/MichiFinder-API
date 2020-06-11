@@ -10,6 +10,7 @@ const CrearUsuario = (user) => {
           correo,
           contrasenia } = user;
 
+
   return new Promise((result, reject) => {
     mysql_con.query(
       'call usp_crear_usuario(?,?,?,?,?,?,?)',
@@ -41,6 +42,7 @@ const ActualizarUsuario = (user) => {
           Fecha_Nacimiento,
           Foto } = user;
 
+
   return new Promise((result, reject) => {
     mysql_con.query(
       'call usp_actualizar_usuario(?,?,?,?,?,?)',
@@ -60,7 +62,9 @@ const ActualizarUsuario = (user) => {
   });
 };
 
+
 const EliminarUsuario = (idUsuario) => {
+
   return new Promise((result, reject) => {
     mysql_con.query(
       'call usp_eliminar_usuario(?)',
