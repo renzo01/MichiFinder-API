@@ -1,6 +1,14 @@
 const mysql_con = require('../Configuration/mysql-config');
 
-const CrearAdopcion = () => {
+const CrearAdopcion = (adoption) => {
+  const {
+    IdUsuario,
+    IdGato,
+    Fecha_adopcion,
+    DNI,
+    direccion_referencia,
+    numero_contacto,
+  } = adoption;
   return new Promise((result, reject) => {
     mysql_con.query(
       'call usp_crear_adopcion(?,?,?,?,?,?)',
