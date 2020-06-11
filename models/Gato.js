@@ -9,7 +9,7 @@ const ListarGatos = () => {
   });
 };
 
-const ListarGatoPorId = () => {
+const ListarGatoPorId = (idGato) => {
   return new Promise((result, reject) => {
     mysql_con.query(
       'call usp_listar_gato_por_id(?)',
@@ -22,7 +22,7 @@ const ListarGatoPorId = () => {
   });
 };
 
-const ListarGatosPorRaza = () => {
+const ListarGatosPorRaza = (raza) => {
   return new Promise((result, reject) => {
     mysql_con.query(
       'call usp_listar_gatos_por_raza(?)',
