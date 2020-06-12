@@ -9,4 +9,6 @@ app.put('/usuario/actualizar', [], UserController.updUser);
 
 app.put('/usuario/eliminar', [], UserController.dltUser);
 
+app.post('/usuario/login', UserController.loginUser);
+
 module.exports = app;

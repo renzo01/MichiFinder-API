@@ -1,15 +1,15 @@
 const mysql_con = require('../Configuration/mysql-config');
 
 const CrearUsuario = (user) => {
-
-  const { Nombre_completo,
-          Direccion,
-          Distrito,
-          Fecha_Nacimiento,
-          Foto,
-          correo,
-          contrasenia } = user;
-
+  const {
+    Nombre_completo,
+    Direccion,
+    Distrito,
+    Fecha_Nacimiento,
+    Foto,
+    correo,
+    contrasenia,
+  } = user;
 
   return new Promise((result, reject) => {
     mysql_con.query(
@@ -21,7 +21,7 @@ const CrearUsuario = (user) => {
         Fecha_Nacimiento,
         Foto,
         correo,
-        contrasenia
+        contrasenia,
       ],
       (err, UsuarioCreado) => {
         console.log(err);
@@ -34,14 +34,14 @@ const CrearUsuario = (user) => {
 };
 
 const ActualizarUsuario = (user) => {
-
-  const { IdUsuarios,
-          Nombre_completo,
-          Direccion,
-          Distrito,
-          Fecha_Nacimiento,
-          Foto } = user;
-
+  const {
+    IdUsuarios,
+    Nombre_completo,
+    Direccion,
+    Distrito,
+    Fecha_Nacimiento,
+    Foto,
+  } = user;
 
   return new Promise((result, reject) => {
     mysql_con.query(
@@ -62,15 +62,25 @@ const ActualizarUsuario = (user) => {
   });
 };
 
-
 const EliminarUsuario = (idUsuario) => {
-
   return new Promise((result, reject) => {
     mysql_con.query(
       'call usp_eliminar_usuario(?)',
-      [
-        idUsuario
-      ],
+      [idUsuario],
+      (err, UsuarioEliminado) => {
+        if (err) reject();
+        result(UsuarioEliminado);
+      }
+    );
+  });
+};
+
+const Login = (user) => {
+  const { correo, contrasenia } = user;
+  return new Promise((result, reject) => {
+    mysql_con.query(
+      'call usp_login_usuario(?,?)',
+      [correo, contrasenia],
       (err, UsuarioEliminado) => {
         if (err) reject();
         result(UsuarioEliminado);
@@ -83,4 +93,5 @@ module.exports = {
   CrearUsuario,
   ActualizarUsuario,
   EliminarUsuario,
+  Login,
 };

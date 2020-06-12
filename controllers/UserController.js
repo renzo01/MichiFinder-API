@@ -51,8 +51,23 @@ const dltUser = async (req, res) => {
   });
 };
 
+const loginUser = async (req, res) => {
+  const body = req.body;
+  const result = await Usuario.Login(body);
+  if (!result) {
+    res.status(500).json({
+      ok: false,
+      mensaje: 'Se tienen que colocar todos los datos',
+    });
+  }
+  res.json({
+    ok: true,
+    usuario: result[0],
+  });
+};
 module.exports = {
   addUser,
   updUser,
   dltUser,
+  loginUser,
 };
