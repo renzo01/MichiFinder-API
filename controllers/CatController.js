@@ -10,8 +10,11 @@ const getAllCats = async (req, res) => {
     });
   }
 
-  res.json({
+  /*res.json({
     ok: true,
+    gatos: result[0],
+  });*/
+  res.json({
     gatos: result[0],
   });
 };

@@ -62,7 +62,7 @@ const loginUser = async (req, res) => {
   }
   res.json({
     ok: true,
-    usuario: result[0],
+    usuario: result[0][0],
   });
 };
 module.exports = {
