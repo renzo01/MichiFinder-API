@@ -15,9 +15,10 @@ const addUser = async (req, res) => {
       mensaje: 'Se tienen que colocar todos los datos',
     });
   }
+
   res.json({
     ok: true,
-    mensaje: 'Se ah registrado correctamente',
+    mensaje: 'Se ha registrado correctamente',
   });
 };
 
