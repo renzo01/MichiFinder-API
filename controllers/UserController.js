@@ -3,7 +3,9 @@ const Usuario = require('../models/Usuario');
 
 const addUser = async (req, res) => {
   let body = req.body;
-  console.log(body);
+
+  const nameFoto = req.file.filename;
+  body.Foto = nameFoto;
 
   const result = await Usuario.CrearUsuario(body);
 

@@ -6,7 +6,7 @@ const ListarGatos = () => {
       if (err) reject();
       result(GatosListados);
     });
-  });
+  }).catch(err => console.log(err));
 };
 
 const ListarGatoPorId = (idGato) => {
